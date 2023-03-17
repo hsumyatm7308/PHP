@@ -26,7 +26,7 @@ echo $result;
 echo "<hr>";
 
  //2. $_SERVER 
- echo $_SERVER["PHP_SELF"]; ///phpb3/part1/l12supergloblevariable.php
+ echo $_SERVER["PHP_SELF"]; ///phpb3/part1/l12supergloblevariable.php   (Current path)
  echo "<hr>";
 
 
@@ -47,5 +47,23 @@ echo "<hr>";
  echo "<hr>";
 
 
+ echo $_SERVER["SERVER_PROTOCOL"];  //HTTP/1.1
+ echo "<hr>";
+
+ echo $_SERVER["SERVER_SIGNATURE"];  //Apache/2.4.54 (Win64) OpenSSL/1.1.1p PHP/8.2.0 Server at localhost Port 80
+ echo "<hr>";
+
+
+ echo $_SERVER["REQUEST_METHOD"];  //GET
+ echo "<hr>";
+
+ echo $_SERVER["REMOTE_ADDR"];  //::1  (port number ko so lo tar)  returns the ip address form whrer the user is viewing
+ echo "<hr>";
+
+ echo $_SERVER["SCRIPT_FILENAME"];  //C:/xampp1/htdocs/phpb3/part1/l12supergloblevariable.php (absolute path)
+ echo "<hr>";
+
+ echo $_SERVER["SCRIPT_NAME"];  ///phpb3/part1/l12supergloblevariable.php  (PHP_SALF )
+ echo "<hr>";
 
 ?>
