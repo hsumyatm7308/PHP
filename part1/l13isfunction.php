@@ -117,16 +117,68 @@
 
     if(empty($val1)){
         echo "Your variable 1 is empty";
-    }
+    };
 
     echo "<br>";
 
     if(isset($val1)){
-        echo "Your varable is set"
-    }
+        echo "Your varable is set";
+    };
 
     echo "<hr>";
 
+    $val1 = 50;
+    echo var_dump($val1) . "<br>";
+    echo gettype($val1) . "<br>";
+
+
+
+    $val2 = 23.45;
+    echo var_dump($val2) . "<br>"; //float
+    echo gettype($val2) . "<br>"; //bouble 
+
+    
+
+    
+    $val3 = "Save CRPH";
+    echo var_dump($val3) . "<br>";
+    echo gettype($val3) . "<br>";
+
+
+    $val4 = array();
+    echo var_dump($val4) . "<br>";
+    echo gettype($val4) . "<br>";
+
+
+    $val5 = false;
+    echo var_dump($val5) . "<br>";
+    echo gettype($val5) . "<br>";
+
+
+    echo "<hr>";
+
+    $val1 = true;
+    var_dump($val1);
+    echo "<br>";
+    settype($val1,"integer");
+    var_dump($val1);
+
+    echo "<hr>";
+
+    $val2 = "50";
+    var_dump($val2);
+    echo "<br>";
+    settype($val2,"integer");
+    var_dump($val2);
+
+
+    echo "<hr>";
+
+    $val3 = 50;
+    var_dump($val3);
+    echo "<br>";
+    settype($val3,"string");
+    var_dump($val3);
 
 
 ?>
