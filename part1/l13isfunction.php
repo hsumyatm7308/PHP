@@ -105,4 +105,28 @@
 
     echo "<hr>";
 
+
+    // is_object
+    // is_object 
+
+
+
+    // empty(variable) VS isset(variable); 
+
+    $val1 = "aye";
+
+    if(empty($val1)){
+        echo "Your variable 1 is empty";
+    }
+
+    echo "<br>";
+
+    if(isset($val1)){
+        echo "Your varable is set"
+    }
+
+    echo "<hr>";
+
+
+
 ?>
