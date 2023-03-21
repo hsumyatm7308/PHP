@@ -68,8 +68,37 @@ $col2 = array("a" => "red","b"=>"green","c"=>"blue","e"=>"orange");
 echo "<pre>".print_r(array_diff_key($col1,$col2),"true")."</pre>"; //gray pink   
 echo "<pre>".print_r(array_diff_key($col2,$col1),"true")."</pre>"; //orange 
 
+echo "<hr>";
 
 
+// array_intersect() Function 
+// array_intersect(array1,array2,array3,...) 
+
+$num1 = [10,20,30,60,70,80];
+$num2 = array(10,20,30,40,50,80,90);
+
+echo "<pre>".print_r(array_intersect($num1,$num2),"true")."</pre>"; //10 20 30 80    
+echo "<pre>".print_r(array_intersect($num2,$num1),"true")."</pre>"; //10 20 30 80    
+
+
+$col1 = array("a" => "red","b"=>"yellow","c"=>"blue","d"=>"green","f"=>"pink"); 
+$col2 = array("a" => "red","b"=>"green","c"=>"blue","e"=>"orange"); 
+
+
+echo "<pre>".print_r(array_intersect($col1,$col2),"true")."</pre>"; //red blue green   
+echo "<pre>".print_r(array_intersect($col2,$col1),"true")."</pre>"; //red green blue 
+
+
+// array_fill() Funtion 
+// array_fill(index,number,value); 
+
+echo "<pre>".print_r(array_fill(0,5,"green"),"true")."</pre>"; //2 blue 3 blue ... 6 blue
+echo "<pre>".print_r(array_fill(0,5,"blue"),"true")."</pre>"; //2 blue 3 blue ... 6 blue
+
+// array_fill_keys() Function 
+// array_fill_keys(key,value) 
+$keys = array("a","b","c","d");
+echo "<pre>".print_r(array_fill_keys($keys,"green"),"true")."</pre>"; //a green b green .... 
 
 
 ?>
