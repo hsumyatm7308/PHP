@@ -63,7 +63,7 @@ echo "<hr>";
  echo $_SERVER["SCRIPT_FILENAME"];  //C:/xampp1/htdocs/phpb3/part1/l12supergloblevariable.php (absolute path)
  echo "<hr>";
 
- echo $_SERVER["SCRIPT_NAME"];  ///phpb3/part1/l12supergloblevariable.php  (PHP_SALF )
+ echo $_SERVER["SCRIPT_NAME"];  ///phpb3/part1/l12supergloblevariable.php  (PHP_SELF )
  echo "<hr>";
 
 ?>

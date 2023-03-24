@@ -101,6 +101,186 @@ $keys = array("a","b","c","d");
 echo "<pre>".print_r(array_fill_keys($keys,"green"),"true")."</pre>"; //a green b green .... 
 
 
+// array_filter() Function 
+// array_filter(array,callbackfunction,flag) 
+
+$num = [1,2,3,4,3];
+
+function getodd($var){
+    return($var & 1);
+}
+
+echo "<pre>".print_r(array_filter($num,"getodd"),"true")."</pre>";
+echo "<hr>";
+
+
+
+// array_key_exists() Function 
+// array_key_exists(key,array) 
+
+$phones = ["Mpt"=> "fifth","ooredoo"=>"broadban"];
+
+if(array_key_exists("mpt",$phones)){
+    echo "key exists";
+}else{
+    echo "key does not exists";
+}
+
+echo "<hr>";
+
+// array_keys() Function 
+// array_key(array,value,strict) 
+
+$phones = ["mpt"=>"fifth","ooredoo"=>"broadban","ais"=>"wifi"];
+
+echo "<pre>".print_r(array_keys($phones),"true")."</pre>";
+echo array_keys($phones)[0]; //mpt
+
+echo "<pre>".print_r(array_keys($phones,"broadban"),"true")."</pre>";
+echo array_keys($phones,"broadban")[0]; //ooredoo
+
+$numbers = [10,20,30,"10"];
+
+echo "<pre>".print_r(array_keys($numbers,"10",true),"true")."</pre>"; 
+echo "<pre>".print_r(array_keys($numbers,10,true),"true")."</pre>";
+
+
+echo "<pre>".print_r(array_keys($numbers,10,false),"true")."</pre>"; 
+echo "<pre>".print_r(array_keys($numbers,10,false),"true")."</pre>"; 
+
+echo "<hr>";
+
+
+// array_map() Function 
+// array_map(callbackfunction,array1,array2,....) 
+
+$males = ["Tun Tun","Zaw Zaw","Aung Aung","kyaw","Thura"];
+$female = ["Hla Hla","Aye Zaw","Su Aung","Thu","Yu Yu"];
+
+function genderone($name){
+    return("Mr.".$name);
+}
+
+function gendertwo($male,$female){
+    return ($male."&".$female);
+}
+
+
+echo "<pre>".print_r(array_map("genderone",$males),"true")."</pre>";
+echo "<pre>".print_r(array_map("gendertwo",$males,$female),"true")."</pre>";
+echo "<hr>";
+
+
+// array_marge() Function 
+// array_marge(array1,array2,array3,..) 
+
+$arr1 = ["red","green"];
+$arr2 = array("blue","yellow");
+$arr3 = ["orange","violet"];
+
+echo "<pre>".print_r(array_merge($arr1,$arr2),"true")."</pre>"; // [0] => red
+// [1] => green
+// [2] => blue
+// [3] => yellow
+echo "<pre>".print_r(array_merge($arr1,$arr2,$arr3),"true")."</pre>"; //  [0] => red
+// [1] => green
+// [2] => blue
+// [3] => yellow
+// [4] => orange
+// [5] => violet
+
+
+// array_multisort()  Function 
+// array_multisort(array) 
+
+$animals = ["Dog","Cat","Mouse","Lion","Zebra","Rat","Bear","Cow"];
+
+array_multisort($animals);
+
+echo "<pre>".print_r($animals,"true")."</pre>"; //a to z
+
+echo "<hr>";
+
+$numbers = [10,20,30,50,100,40,250,120];
+array_multisort($numbers);
+echo "<pre>".print_r($numbers,"true")."</pre>"; // 0 to 10 
+
+
+$numbers = [10,"20",30,50,"100",40,250,120];
+array_multisort($numbers);
+echo "<pre>".print_r($numbers,"true")."</pre>"; // 0 to 10 
+
+
+
+// sort() Function 
+// sort(array) 
+
+$cars = ["volvo","bmw","toyota","mazada","suzuki"];
+sort($cars);
+echo "<pre>".print_r($cars,"true")."</pre>"; 
+
+$numbers = array(10,50,"80","90",100, "130","250",70);
+echo "<pre>".print_r($numbers,"true")."</pre>"; 
+
+echo "<hr>";
+
+
+// array_pad() Function 
+// array_pad(array,size,value) 
+$colors = ["red","green"];
+echo "<pre>".print_r(array_pad($colors,5,"blue"),"true")."</pre>";
+
+echo "<hr>";
+
+// array_pop() Function 
+// array_pop(array) 
+
+$colors = ["red","green","blue"];
+array_pop($colors);
+echo "<pre>".print_r($colors,"true")."</pre>"; //red green
+
+
+
+// array_reduce() Function 
+// array_reduce(array,callbackfunction,initial) 
+
+$num = [10,"20",30];
+
+function calfun($total,$val){
+    return $total += $val;
+}
+
+echo "<pre>".print_r(array_reduce($num,"calfun",0),"true")."</pre>"; 
+
+echo "<hr>";
+
+
+// array_reverse() Function 
+// array_reverse(array) 
+
+$arr = ["a","b","g","e"];
+echo "<pre>".print_r(array_reverse($arr),"true")."</pre>";
+
+
+
+$arr = ["a"=>"red","b"=>"green","g"=>"violet","c"=>"blue"];
+echo "<pre>".print_r(array_reverse($arr),"true")."</pre>";
+
+echo "<hr>";
+
+
+// array_search() Function 
+// array_search(value,array) 
+
+$arr = ["a","b","g","e"];
+echo "<pre>".print_r(array_search("b",$arr),"true")."</pre>";
+
+
+
+$arr = ["a"=>"red","b"=>"green","g"=>"violet","c"=>"blue"];
+echo "<pre>".print_r(array_search("green",$arr),"true")."</pre>";
+
+
 ?>
 
 
