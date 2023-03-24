@@ -280,6 +280,56 @@ echo "<pre>".print_r(array_search("b",$arr),"true")."</pre>";
 $arr = ["a"=>"red","b"=>"green","g"=>"violet","c"=>"blue"];
 echo "<pre>".print_r(array_search("green",$arr),"true")."</pre>";
 
+echo "<hr>";
+
+
+
+// array_shift() Function 
+// array_shift(array) 
+
+$colors = array("red","green","blue");
+array_shift($colors);
+echo "<pre>".print_r($colors,"true")."</pre>";
+
+$arr = ["a"=>"red","b"=>"green","g"=>"violet","c"=>"blue"];
+array_unshift($arr);
+
+echo "<pre>".print_r($arr,"true")."</pre>";
+
+
+// array_unshift() Function 
+$colors = array("red","green","blue");
+array_unshift($colors);
+echo "<pre>".print_r($colors,"true")."</pre>";
+
+$arr = ["a"=>"red","b"=>"green","g"=>"violet","c"=>"blue"];
+array_unshift($arr,"silver");
+echo "<pre>".print_r($arr,"true")."</pre>";
+
+
+
+$arr = ["1"=>"red","2"=>"green","3"=>"violet","4"=>"blue"];
+array_unshift($arr,"brown");
+echo "<pre>".print_r($arr,"true")."</pre>";
+
+
+// array_push() Function 
+// array_push(array,value1,value2,value3,...)
+$colors = array("red","green","blue");
+array_push($colors,"black");
+echo "<pre>".print_r($colors,"true")."</pre>";
+
+$arr = ["a"=>"red","b"=>"green","g"=>"violet","c"=>"blue"];
+array_push($arr,"silver");
+echo "<pre>".print_r($arr,"true")."</pre>";
+
+
+
+$arr = ["1"=>"red","2"=>"green","3"=>"violet","4"=>"blue"];
+array_push($arr,"brown");
+echo "<pre>".print_r($arr,"true")."</pre>";
+
+ 
 
 ?>
 
