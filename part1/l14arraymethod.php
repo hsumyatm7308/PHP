@@ -297,6 +297,9 @@ array_unshift($arr);
 echo "<pre>".print_r($arr,"true")."</pre>";
 
 
+echo "<hr>";
+
+
 // array_unshift() Function 
 $colors = array("red","green","blue");
 array_unshift($colors);
@@ -311,6 +314,10 @@ echo "<pre>".print_r($arr,"true")."</pre>";
 $arr = ["1"=>"red","2"=>"green","3"=>"violet","4"=>"blue"];
 array_unshift($arr,"brown");
 echo "<pre>".print_r($arr,"true")."</pre>";
+
+
+
+echo "<hr>";
 
 
 // array_push() Function 
@@ -331,6 +338,60 @@ echo "<pre>".print_r($arr,"true")."</pre>";
 
  
 
+echo "<hr>";
+
+
+// array_slice() Function 
+// array_slice(array,start,length,preserve) 
+
+$colors = array("red","green","blue","yellow","black");
+
+echo "<pre>".print_r(array_slice($colors,0),"true")."</pre>"; //red to black 
+echo "<pre>".print_r(array_slice($colors,2),"true")."</pre>"; //blue to black 
+
+echo "<pre>".print_r(array_slice($colors,-1),"true")."</pre>"; // black 
+echo "<pre>".print_r(array_slice($colors,-2),"true")."</pre>"; // yellow black 
+echo "<pre>".print_r(array_slice($colors,-5),"true")."</pre>"; // red to black 
+
+echo "<pre>".print_r(array_slice($colors,0,2),"true")."</pre>"; // red green  
+echo "<pre>".print_r(array_slice($colors,2,2),"true")."</pre>"; // blue yellow   
+echo "<pre>".print_r(array_slice($colors,2,5),"true")."</pre>"; // blue yellow  black nothing 
+
+
+echo "<pre>".print_r(array_slice($colors,2,2,true),"true")."</pre>"; // blue yellow   
+echo "<pre>".print_r(array_slice($colors,2,2,false),"true")."</pre>"; // blue yellow   
+
+
+// array_splice() Function 
+                    // idx 
+// array_splice(array1,start,length,array2)
+
+$colors = array("red","green","blue","yellow","black");
+// echo "<pre>".print_r(array_splice($colors,2),"true")."</pre>"; //blue to black 
+
+// echo "<pre>".print_r(array_splice($colors,2,1),"true")."</pre>"; //blue 
+
+// echo "<pre>".print_r(array_splice($colors,2,3),"true")."</pre>"; //blue to black
+
+// echo "<pre>".print_r(array_splice($colors,2,-1),"true")."</pre>"; //blue yellow
+// echo "<pre>".print_r(array_splice($colors,0,-4),"true")."</pre>"; //red
+
+echo "<hr>";
+
+
+$males = ["aung","maung","kyaw","zaw","naung"];
+$females = ["su","yu","nu"];
+// array_splice($male,0,2,$females);
+// echo "<pre>".print_r($males,"true")."</pre>";
+
+array_splice($males,0,3,$females);
+echo "<pre>".print_r($males,"true")."</pre>";
+
+
+
 ?>
+
+
+<!-- 24AC  -->
 
 
