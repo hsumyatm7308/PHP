@@ -405,21 +405,92 @@ echo "<pre>".print_r(array_values($colors),"true")."</pre>";
 
 
 // array_walk() Function 
-// array_walk(array,callbackfunction,paramerter) 
-$colors = array("a"=>"red","b"=>"green","c"=> "blue","d"=>"red","e"=>"blue");
+// array_walk(array,callbackfunction,parameter)
+
+//  result for string 
+
+$colors=array("a"=>"red","b"=>"green","c"=>"blue","d"=>"red","e"=>"blue");
 
 function myfunone($val,$key){
-    echo "key is = $key and value is $val <br>";
+    echo "key is = $key and value is $val <br/>"; //string
 }
 
-array_walk($colors,"myfunone","color");
+array_walk($colors,"myfunone");
 
+
+
+$colors=array("a"=>"red","b"=>"green","c"=>"blue","d"=>"red","e"=>"blue");
 
 function myfuntwo($val,$key,$p){
-    echo "key is = $key and value is $val $p <br>";
+    echo "key is = $key and value is $val $p<br/>"; //string
 }
 
 array_walk($colors,"myfuntwo","color");
+
+echo "<hr/>";
+
+$colors=array("a"=>"red","b"=>"green","c"=>"blue","d"=>"red","e"=>"blue");
+
+// & is passing value for array value 
+function myfunthree(&$val){
+      $val="black"; 
+}
+
+array_walk($colors,"myfunthree");
+
+echo "<pre>".print_r($colors,"true")."</pre>";
+echo "<hr/>";
+
+// compact() Function 
+// compact(var1,var2,var3,....)
+
+$name = "Aung Aung";
+$age = "25";
+$city = "Yangon";
+
+$result = compact("name","age","country");
+echo "<pre>".print_r($result,"true")."</pre>";
+
+
+// current() / pos() / end() / next() / prev() / reset()  
+
+$students = array("aung aung","maung maung","zaw zaw","tun tun","kyaw kyaw");
+// echo "<pre>".print_r(current($students),"true")."</pre>";
+// echo "<pre>".print_r(pos($students),"true")."</pre>";
+// echo "<pre>".print_r(end($students),"true")."</pre>";
+
+// echo "<pre>".print_r(current($students),"true")."</pre>";
+// echo "<pre>".print_r(next($students),"true")."</pre>";
+
+
+echo "<pre>".print_r(current($students),"true")."</pre>"; //aung aung 
+echo "<pre>".print_r(next($students),"true")."</pre>"; // maung mmaung
+echo "<pre>".print_r(prev($students),"true")."</pre>"; //aung aung
+
+echo "<pre>".print_r(reset($students),"true")."</pre>"; //aung aung
+
+echo "<hr>";
+
+
+
+
+// range() Function 
+// range(low,hight,step )
+
+$num1 = range(0,5);
+echo "<pre>".print_r($num1,"true")."</pre>"; 
+
+
+$num2 = range(0,50,10);
+echo "<pre>".print_r($num2,"true")."</pre>"; 
+
+
+$char = range("a","k");
+echo "<pre>".print_r($char,"true")."</pre>"; 
+
+
+$char = range("k","g");
+echo "<pre>".print_r($char,"true")."</pre>"; 
 
 echo "<hr>";
 
