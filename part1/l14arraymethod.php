@@ -388,10 +388,46 @@ array_splice($males,0,3,$females);
 echo "<pre>".print_r($males,"true")."</pre>";
 
 
+echo "<hr>";
+
+
+// array_unique(array) Function 
+$num = [10,20,30,50,10,70,80,10];
+echo "<pre>".print_r(array_unique($num),"true")."</pre>";
+
+
+// array_values() Function 
+// array_values(array)
+
+$colors = array("a"=>"red","b"=>"green","c"=> "blue","d"=>"red","e"=>"blue");
+echo "<pre>".print_r(array_values($colors),"true")."</pre>";
+
+
+
+// array_walk() Function 
+// array_walk(array,callbackfunction,paramerter) 
+$colors = array("a"=>"red","b"=>"green","c"=> "blue","d"=>"red","e"=>"blue");
+
+function myfunone($val,$key){
+    echo "key is = $key and value is $val <br>";
+}
+
+array_walk($colors,"myfunone","color");
+
+
+function myfuntwo($val,$key,$p){
+    echo "key is = $key and value is $val $p <br>";
+}
+
+array_walk($colors,"myfuntwo","color");
+
+echo "<hr>";
+
+
 
 ?>
 
 
-<!-- 24AC  -->
+
 
 
