@@ -495,6 +495,18 @@ echo "<pre>".print_r($char,"true")."</pre>";
 echo "<hr>";
 
 
+// sizeof() Function 
+// sizeof(array); 
+
+$colors = ["red","green","blue","pink"];
+echo "<pre>".print_r(sizeof($colors),"true")."</pre>"; 
+
+
+echo var_dump(sizeof($colors));
+
+echo "<hr>";
+
+
 
 ?>
 
