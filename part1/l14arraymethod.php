@@ -504,7 +504,10 @@ echo "<pre>".print_r(sizeof($colors),"true")."</pre>";
 
 echo var_dump(sizeof($colors));
 
-echo "<hr>";
+echo "<hr>"; 
+
+
+
 
 
 
