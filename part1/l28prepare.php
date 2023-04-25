@@ -68,7 +68,92 @@ mysqli_close($conn);
 echo "<hr>";
 
 
-// 21PR 
+
+$dbhost = "localhost";
+$dbuser ="root";
+$dbpass = "";
+$dbname = "phpdbtwo";
+
+$conn = new mysqli($dbhost,$dbuser,$dbpass,$dbname);
+
+if($conn -> connect_err){
+    die ("Connection Failed :" . $conn->connect_error);
+
+}
+
+$stmt = $conn->prepare("INSERT INTO students(firstname,lastname,city) VALUE (?,?,?)");
+$stmt->bind_param("sss",$firstname,$lastname,$city);
+
+$firstname = "kyaw kyaw";
+$lastname = "aung";
+$city = "bago";
+$stmt->execute();
+
+$firstname = "aye kyaw";
+$lastname = "thu";
+$city = "bago";
+$stmt->execute();
+
+$firstname = "kyaw tun";
+$lastname = "aung";
+$city = "bago";
+$stmt->execute();
+
+if($conn->query($sql)===TRUE ){
+
+   echo "Update Successfully";
+
+}else{
+    echo "No Result";
+}
+
+$conn -> close();
+echo "<hr>";
+
+
+
+
+//PDO  
+
+$dbhost = "localhost";
+$dbuser ="root";
+$dbpass = "";
+$dbname = "phpdbtwo";
+
+try{
+
+    $conn = new PDO("mysql:host = $dbhost; dbname= $dbname",$dbuser,$dbpass);
+    $conn->setAttribute(PDO:ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+    
+
+    $stmt = $conn->prepare("INSERT INTO students(firstname,lastname,city) VALUE(:firstname,:lastname,:city)");
+    $stmt->bind_param(':firstname',$firstname);
+    $stmt->bind_param(':lastname',$lastname);
+    $stmt->bind_param(':city',$city);
+
+    $firstname = "kyaw kyaw";
+    $lastname = "aung";
+    $city = "bago";
+    $stmt->execute();
+    
+    $firstname = "aye kyaw";
+    $lastname = "thu";
+    $city = "bago";
+    $stmt->execute();
+    
+    $firstname = "kyaw tun";
+    $lastname = "aung";
+    $city = "bago";
+    $stmt->execute();
+
+    echo $stmt->rowCount() . " Updated Successful";
+
+}catch(PDOException $e){
+echo "Error Found : ".$e->getMessage();
+
+}
+
+$conn =null;
 
 
 ?>
