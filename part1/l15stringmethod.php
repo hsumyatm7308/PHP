@@ -185,7 +185,15 @@
     echo number_format("10000000"). "<br>"; 
     echo number_format("10000000",2). "<br>"; 
 
-    // 31SM 
+    echo "<hr>";
+    
+    // stripslashes(string) 
+    $str = "he\'s my father";
+    echo $str;
+    echo "<hr>";
+
+    echo stripcslashes($str);
+
 
 
 
