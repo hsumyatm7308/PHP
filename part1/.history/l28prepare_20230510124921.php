@@ -127,9 +127,9 @@ try{
     
 
     $stmt = $conn->prepare("INSERT INTO students(firstname,lastname,city) VALUE(:firstname,:lastname,:city)");
-    $stmt->bindParam(':firstname',$firstname);
-    $stmt->bindParam(':lastname',$lastname);
-    $stmt->bindParam(':city',$city);
+    $stmt->bind_param(':firstname',$firstname);
+    $stmt->bind_param(':lastname',$lastname);
+    $stmt->bind_param(':city',$city);
 
     $firstname = "kyaw kyaw";
     $lastname = "aung";

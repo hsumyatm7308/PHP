@@ -46,25 +46,4 @@ echo $studentsde->name . "<br>";
 echo $studentsde->age . "<br>";
 echo $studentsde->city . "<br>";
 
-foreach($studentsde as $key=>$value){
-    echo $key . " is " . $value . "<br>";
-}
-
-echo "<hr>";
-
-$students = '{"name":"aung aung","age":25,"city":"yangon"}';
-$studentsde = json_decode($students,true);
-echo "<pre>".print_r($studentsde,true)."</pre>";
-
-// can print 
-echo $studentsde["name"];
-echo $studentsde["age"];
-echo $studentsde["city"];
-
-
-// can't print(-> Object Operactor)
-// echo $studentsde->name . "<br>";
-// echo $studentsde->age . "<br>";
-// echo $studentsde->city . "<br>";
-
 ?>

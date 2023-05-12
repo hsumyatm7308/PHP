@@ -41,8 +41,8 @@ $students = [
             <li><?php echo $students[0]['firstname']." ".$students[0]['lastname'] ?></li>
             <li><?php echo $students[1]['firstname']." ".$students[0]['lastname'] ?></li>
             <li><?php echo $students[2]['firstname']." ".$students[0]['lastname'] ?></li>
-            <li><?=  $students[3]['firstname']." ".$students[0]['lastname'] ?></li>
-            <li><?=  $students[4]['firstname']." ".$students[0]['lastname'] ?></li>
+            <li><?= echo $students[3]['firstname']." ".$students[0]['lastname'] ?></li>
+            <li><?= echo $students[4]['firstname']." ".$students[0]['lastname'] ?></li>
 
         </ul>
         

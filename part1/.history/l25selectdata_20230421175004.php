@@ -1,5 +1,5 @@
 <?php
-ini_set('display_errors',1);
+ini_set('display_errors');
 
 
 // =>MYSQLi Procedural 
@@ -46,7 +46,7 @@ $dbname = "phpdbtwo";
 
 $conn = new mysqli($dbhost,$dbuser,$dbpass,$dbname);
 
-if($conn -> connect_error){
+if($conn -> connect_err){
     die ("Connection Failed :" . $conn->connect_error);
 
 }
@@ -63,7 +63,7 @@ echo "$result->num_rows";
 
 if($result -> num_rows > 0 ){
     while($row = $result->fetch_assoc()){
-        echo "id : ".$row['id']. " - Name : ". $row["firstname"]. " ".$row['lastname'];
+        echo "id : ".$row['id']. " - Name : ". $row["firstname"]. " ".$row['lastname']
     };
 }else{
     echo "No Result";
@@ -81,7 +81,7 @@ $dbname = "phpdbtwo";
 try{
 
     $conn = new PDO("mysql:host = $dbhost; dbname= $dbname",$dbuser,$dbpass);
-    $conn->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+    $conn->setAttribute(PDO:ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 
     $stmt = $conn->prepare("SELECT id,firstname,lastname FROM students");
     $stmt->execute();

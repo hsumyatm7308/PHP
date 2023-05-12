@@ -8,9 +8,9 @@ if($_SERVER["REQUEST METHOD"]==="POST"){
 
     $name = $_POST["name"];
     $email = $_POST["email"];
-    $password = $_POST["password"];
-    $city = $_POST["city"];
-    $favcolor = $_POST["favcolor"];
+    $email = $_POST["password"];
+    $email = $_POST["city"];
+    $email = $_POST["favcolor"];
 
 
 }

@@ -57,14 +57,9 @@ $studentsde = json_decode($students,true);
 echo "<pre>".print_r($studentsde,true)."</pre>";
 
 // can print 
-echo $studentsde["name"];
-echo $studentsde["age"];
-echo $studentsde["city"];
+// echo $studentsen["name"];
+// echo $studentsen["age"];
+// echo $studentsen["city"];
 
-
-// can't print(-> Object Operactor)
-// echo $studentsde->name . "<br>";
-// echo $studentsde->age . "<br>";
-// echo $studentsde->city . "<br>";
 
 ?>

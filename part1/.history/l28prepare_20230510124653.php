@@ -61,7 +61,7 @@ $city = "bagan";
 mysqli_stmt_execute($prepare);
 
 
-echo "New Records Created Successfully";
+echo "New Records Created Successfully"
 
 mysqli_close($conn); 
 
@@ -76,7 +76,7 @@ $dbname = "phpdbtwo";
 
 $conn = new mysqli($dbhost,$dbuser,$dbpass,$dbname);
 
-if($conn -> connect_error){
+if($conn -> connect_err){
     die ("Connection Failed :" . $conn->connect_error);
 
 }
@@ -123,13 +123,13 @@ $dbname = "phpdbtwo";
 try{
 
     $conn = new PDO("mysql:host = $dbhost; dbname= $dbname",$dbuser,$dbpass);
-    $conn->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+    $conn->setAttribute(PDO:ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
     
 
     $stmt = $conn->prepare("INSERT INTO students(firstname,lastname,city) VALUE(:firstname,:lastname,:city)");
-    $stmt->bindParam(':firstname',$firstname);
-    $stmt->bindParam(':lastname',$lastname);
-    $stmt->bindParam(':city',$city);
+    $stmt->bind_param(':firstname',$firstname);
+    $stmt->bind_param(':lastname',$lastname);
+    $stmt->bind_param(':city',$city);
 
     $firstname = "kyaw kyaw";
     $lastname = "aung";
