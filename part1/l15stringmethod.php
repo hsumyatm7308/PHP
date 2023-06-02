@@ -19,8 +19,8 @@
     echo str_word_count($words); //3 
     echo "<br>"; 
     echo str_word_count($words,0); //3 
-    echo "<pre>".print_r(str_word_count($words,1),"true")."<pre>";  //[0] => Save [1] => Myanmar
-    echo "<pre>".print_r(str_word_count($words,2),"true")."<pre>";  // [0] => Save [5] =>Myanmar
+    echo "<pre>".print_r(str_word_count($words,1),true)."<pre>";  //[0] => Save [1] => Myanmar
+    echo "<pre>".print_r(str_word_count($words,2),true)."<pre>";  // [0] => Save [5] =>Myanmar
 
 
     echo "<hr>";
@@ -154,13 +154,13 @@
     // explode(separator,sting,limit)  
 
     $words = "Welcome to My Country";
-     echo "<pre>".print_r(explode(" ",$words),"true")."<pre>";
+     echo "<pre>".print_r(explode(" ",$words),true)."<pre>";
 
-     echo "<pre>".print_r(explode(" ",$words,0),"true")."<pre>";
+     echo "<pre>".print_r(explode(" ",$words,0),true)."<pre>";
 
-     echo "<pre>".print_r(explode(" ",$words,1),"true")."<pre>";
-     echo "<pre>".print_r(explode(" ",$words,2),"true")."<pre>";
-     echo "<pre>".print_r(explode(" ",$words,3),"true")."<pre>";
+     echo "<pre>".print_r(explode(" ",$words,1),true)."<pre>";
+     echo "<pre>".print_r(explode(" ",$words,2),true)."<pre>";
+     echo "<pre>".print_r(explode(" ",$words,3),true)."<pre>";
 
     echo "<hr>";
 
@@ -168,15 +168,15 @@
     // Implode(sepatator,array) 
     $words = ["Welcome", "to", "My", "Countr"];
 
-    echo "<pre>".print_r(implode(" ",$words),"true")."<pre>";
-    echo "<pre>".print_r(implode("-",$words),"true")."<pre>";
+    echo "<pre>".print_r(implode(" ",$words),true)."<pre>";
+    echo "<pre>".print_r(implode("-",$words),true)."<pre>";
 
     echo "<hr>";
 
     // join() Function 
     // join(separator,array) 
-    echo "<pre>".print_r(join(" ",$words),"true")."<pre>";
-    echo "<pre>".print_r(join("- ",$words),"true")."<pre>";
+    echo "<pre>".print_r(join(" ",$words),true)."<pre>";
+    echo "<pre>".print_r(join("- ",$words),true)."<pre>";
 
     echo "<hr>";
 
@@ -195,6 +195,39 @@
     echo stripcslashes($str);
 
 
+
+    // basename()
+    $path ="./assets/img/cover.jpg";
+    echo $path ."<br>"; 
+    echo basename($path) ."<br>";
+    echo basename($path,".jpg") ."<br>";
+
+
+    // pathinfo() Function 
+
+    // PATHINFO_DIRNAME
+    // PATHINFO_BASENAME
+    // PATHINFO_EXTENSION
+    // PATHINFO_FILENAME
+
+    $filepath = "./assets/img/user/cover.jpg";
+    echo "<pre>".print_r(pathinfo($filepath),true)."</pre>";
+
+//     Array
+// (
+//     [dirname] => ./assets/img/user
+//     [basename] => cover.jpg
+//     [extension] => jpg
+//     [filename] => cover
+// )
+    
+    echo pathinfo($filepath,PATHINFO_DIRNAME);
+    echo "<br>";
+    echo pathinfo($filepath,PATHINFO_BASENAME);
+    echo "<br>";
+    echo pathinfo($filepath,PATHINFO_EXTENSION);
+    echo "<br>";
+    echo pathinfo($filepath,PATHINFO_FILENAME);
 
 
 ?>

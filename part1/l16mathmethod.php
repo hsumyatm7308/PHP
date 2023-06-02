@@ -57,11 +57,19 @@ echo "<hr>";
 
 // pow() Funciton 
 // pow(x,y);
-echo pow(2,4) . "<br>";
-echo pow(3,4) . "<br>";
+echo pow(2,4) . "<br>"; //16
+echo pow(3,4) . "<br>"; //81
 
 echo "<hr>"; 
 
+// log() Logarithm Function 
+// log(number,base)
+
+echo log(10,2). "<br>"; //3.3219280948874
+echo log(20,2). "<br>"; //4.3219280948874
+echo log(80,2). "<br>"; //6.3219280948874
+
+echo "<hr>"; 
 
 // sqrt() Funciton 
 // sqrt(number);
@@ -78,6 +86,18 @@ echo "<hr>";
 echo rand() . "<br>";
 echo rand(0,100) . "<br>";
 echo rand(100,1000) . "<br>";
+
+echo "<hr>"; 
+
+
+// number_format() Function 
+// number_format(num,decimals)
+// number_format(num,decimals,decimal_separator,thousnads_separatpr)
+echo number_format(1500,2)."<br>";
+echo number_format(15000000,2)."<br>";
+echo number_format(193999900,2,'.')."<br>";
+echo number_format(1500999900,2,'.','-')."<br>";
+
 
 
 

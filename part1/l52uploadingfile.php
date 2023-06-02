@@ -24,31 +24,165 @@ if(isset($_POST['submit'])){
     echo "<br>";
 };
 
-function getfilesize($filesize){
+// function getfilesize($filesize){
 
-   if(is_numeric($filesize)){
-    $idx = 0;
-    $prefix = ["Bit","Kb","Mb","Gb","Tb","Pb","Eb","Zb","Yb"];
-    $fixnum = 1024;
+//    if(is_numeric($filesize)){
+//     $idx = 0;
+//     $prefix = ["Bit","Kb","Mb","Gb","Tb","Pb","Eb","Zb","Yb"];
+//     $fixnum = 1024;
 
-    // echo $prefix[$idx];
+//     // echo $prefix[$idx];
 
-    while(($filesize/$fixnum) > 0.9){
-        $filesize = $filesize/$fixnum;
-        $idx++;
+//     while(($filesize/$fixnum) > 0.9){
+//         $filesize = $filesize/$fixnum;
+//         $idx++;
+//     }
+
+//     return round($filesize,2).' '.$prefix[$idx];
+
+//    }else{
+//     return "NaN";
+//    }
+// }
+
+//  echo getfilesize(70000000);
+
+// function getfilesize($filesize){
+//      $idx = 0;
+//      $fixnum = 1024;
+//      $prefix = ["B","Kb","Mb","Gb","Tb","Pb","Eb","Zb","Yb"];
+
+//      if($filesize < $fixnum){
+//         return $filesize.' '.$prefix[$idx];
+
+//      }else{
+//         while($filesize > $fixnum){
+//             $filesize = round($filesize/$fixnum,2);
+//             $idx++;
+//         }
+
+//         return $filesize. ' '.$prefix[$idx];
+//      }
+// }
+
+// echo getfilesize(7000000000);
+
+// function getfilesizethree($filesize){
+//      $size = filesize($filesize);
+//      $fixnum = 1024;
+//      $prefix = ["B","Kb","Mb","Gb","Tb","Pb","Eb","Zb","Yb"];
+
+//     //  echo $size;
+
+//      $power = $size > 0 ? floor(log($size,$fixnum)): 0;
+//     //  log(574,1024) 
+//     // floor(log(574,1024))
+
+//      $result = round($size / pow($fixnum,$power),2) . ' '.$prefix[$power];
+//     //   574/(1024/0)
+//     //   574/1 = 574 
+//      return $result;
+// }
+
+// echo getfilesizethree('l41userdeleteform.php');
+
+
+
+
+$uploaddir = "assets/";
+$uploadfile = $uploaddir.$_FILES['profile']['name'];
+$uploadfile = $uploaddir.basename($_FILES['profile']['name']);
+echo $uploadfile;
+
+// move_uploaded_file(temp,actualpathandname);
+if(isset($_POST['submit'])){
+    if(move_uploaded_file($_FILES['profile']['tmp_name'],$uploadfile)){
+        echo "File Sucessfully uploaded";
+    }else{
+        echo "Try Again";
     }
-
-    return round($filesize,2).' '.$prefix[$idx];
-
-   }else{
-    return "NaN";
-   }
 }
 
- echo getfilesize(70000000);
+// $uploaddir = "localhost/phpb3/assets/";
+// $uploadfile = $uploaddir.basename($_FILES['profile']['name']);
+// $uploadsize = $_FILES['profile']['size'];
+
+// if(isset($_POST['submit'])){
+//     if(file_exists($uploadfile)){
+//           echo "Failed";
+//     }else{
+//         if(move_uploaded_file($_FILES['profile']['tmp_name'],$uploadfile)){
+//               echo "File Successfully Updaed";
+//         }else{
+//             echo "Try Again";
+//         };
+//     }
+// }
+
+
+// if(isset($_POST['submit'])){
+
+//     if($uploadsize > 30000){
+//         echo "Sorry, Your file is too large";
+//     }else{
+
+//         if(file_exists($uploadfile)){
+//             echo "Failed";
+//       }else{
+//           if(move_uploaded_file($_FILES['profile']['tmp_name'],$uploadfile)){
+//                 echo "File Successfully Updaed";
+//           }else{
+//               echo "Try Again";
+//           };
+//       }
+
+//     }
+
+   
+// }
+
+
+
+// $uploaddir = "localhost/phpb3/assets/";
+// $uploadfile = $uploaddir.basename($_FILES['profile']['name']);
+// $uploadsize = $_FILES['profile']['size'];
+// $uploadtype = pathinfo($uploadfile,PATHINFO_EXTENSION);
+
+// // echo $uploadtype;
+// if(isset($_POST['submit'])){
+
+//     if($uploadtype !== 'jpg' && $uploadtype !== 'jpeg' && $uploadtype !== 'png'){
+//         echo "Sorry, Your file is too large";
+//     }else{
+//         if(isset($_POST['submit'])){
+
+//             if($uploadsize > 30000){
+//                 echo "Sorry, Your file is too large";
+//             }else{
+        
+//                 if(file_exists($uploadfile)){
+//                     echo "Failed";
+//               }else{
+//                   if(move_uploaded_file($_FILES['profile']['tmp_name'],$uploadfile)){
+//                         echo "File Successfully Updaed";
+//                   }else{
+//                       echo "Try Again";
+//                   };
+//               }
+        
+//             }
+        
+//     }
+
+    
+   
+// }
+
+// }
+
 ?>
 
-
+<!-- 2RT -->
 
 
 
@@ -83,4 +217,12 @@ function getfilesize($filesize){
 byte = 8 bit   -->
 
 
-<!-- 30UP  -->
+<!-- 1Mb = 1024kb instead of 1000kb 
+
+2^0 = 1 
+2^-1 = 1/2
+2^-2 = 1/4 
+
+2^3 = 8
+2^2 = (2^3)/2 = 8/2 = 4
+2^1 = (2^2)/2 =4/2 = 2 -->
