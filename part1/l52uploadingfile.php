@@ -1,14 +1,13 @@
+<?php
 
-<?php 
-
-if(isset($_POST['submit'])){
+if (isset($_POST['submit'])) {
     echo "Hay";
 
     // $result = $_POST['profile'];
     // echo $result;
 
     $result = $_FILES;
-    echo "<pre>".print_r($result,true)."</pre>";
+    echo "<pre>" . print_r($result, true) . "</pre>";
 
     echo $_FILES['profile']['name'];
     echo "<br>";
@@ -22,7 +21,22 @@ if(isset($_POST['submit'])){
     echo "<br>";
     echo $_FILES['profile']['size'];
     echo "<br>";
-};
+
+
+    $fileext = explode('.', $_FILES['profile']['name']);
+
+    echo "<pre>" . print_r($fileext, true) . "</pre>";
+    echo $fileext[0] . "<br>";
+    echo $fileext[1] . "<br>";
+
+    $fileextname = current(explode('.', $_FILES['profile']['name']));
+    echo $fileextname . "<br>";
+
+    // $fileextformat = end(explode('.', $_FILES['profile']['name']));
+    // echo $fileextformat . "<br>";
+
+}
+;
 
 // function getfilesize($filesize){
 
@@ -90,15 +104,15 @@ if(isset($_POST['submit'])){
 
 
 $uploaddir = "assets/";
-$uploadfile = $uploaddir.$_FILES['profile']['name'];
-$uploadfile = $uploaddir.basename($_FILES['profile']['name']);
+$uploadfile = $uploaddir . $_FILES['profile']['name'];
+$uploadfile = $uploaddir . basename($_FILES['profile']['name']);
 echo $uploadfile;
 
 // move_uploaded_file(temp,actualpathandname);
-if(isset($_POST['submit'])){
-    if(move_uploaded_file($_FILES['profile']['tmp_name'],$uploadfile)){
+if (isset($_POST['submit'])) {
+    if (move_uploaded_file($_FILES['profile']['tmp_name'], $uploadfile)) {
         echo "File Sucessfully uploaded";
-    }else{
+    } else {
         echo "Try Again";
     }
 }
@@ -138,7 +152,7 @@ if(isset($_POST['submit'])){
 
 //     }
 
-   
+
 // }
 
 
@@ -159,7 +173,7 @@ if(isset($_POST['submit'])){
 //             if($uploadsize > 30000){
 //                 echo "Sorry, Your file is too large";
 //             }else{
-        
+
 //                 if(file_exists($uploadfile)){
 //                     echo "Failed";
 //               }else{
@@ -169,16 +183,100 @@ if(isset($_POST['submit'])){
 //                       echo "Try Again";
 //                   };
 //               }
-        
+
 //             }
-        
+
 //     }
 
-    
-   
+
+
 // }
 
 // }
+
+
+// $uploaddir = "assets/"; 
+// $uploadfile = $uploaddir.basename($_FILES['profile']['name']);
+// $uploadtype = pathinfo($uploadfile,PATHINFO_EXTENSION); //jpg png txt 
+
+// $uploadalready = true;
+
+// if(isset($_POST['submit'])){
+//     // check file already exist or not 
+//     if(file_exists(($uploadfile))){
+//         echo "Sorry, File already exists . </br>";
+//         $uploadalready = false;
+//     }
+
+//     // check file size 
+//     if($_FILES['profile']['size'] > 30000){
+//         echo "Sorry, your file is too large <br>";
+//         $uploadalready = false;
+
+//     }
+
+//     // check file format 
+//     if($uploadtype !== "jpg" && $uploadtype !== "jpeg" && $uploadtype !== "png" ){
+//         echo "Sorry, we just allowed JPG,JPEG,PNG & GIF files";
+//         $uploadalready = false;
+
+//     }
+
+
+//     // upload 
+//     if($uploadalready){
+//        if(move_uploaded_file($_FILES['profile']['name'],$uploadfile)){
+//          echo "Upload Successfully";
+//        }else{
+//         echo "Try Again";
+//        }
+//     }else{
+//         "Sorry Your file is not uploaded";
+//     };
+// }
+
+
+if (isset($_POST['submit']) && !empty($_FILES["profile"]["name"])) {
+    $filename = $_POST['profile']['name'];
+    $filesize = $_POST['profile']['size'];
+    $filetmp = $_POST['profile']['tmp_name'];
+    $filetype = $_POST['profile']['type']; //image/jpeg
+
+    $uploaddir = "assets/";
+    $uploadfile = $uploaddir . basename($filename);
+    $uploadtype = strtolower(explode('.',$filename));
+
+    $allowextensions = ['jpg', 'jpeg', 'png', 'gif'];
+
+    // check extention 
+    if (isset($_FILES['profile'])) {
+
+        $errors = [];
+
+        // check extention 
+        if (in_array($uploadtype, $allowextensions) === false) {
+            $errors[] = "Sorry we just allowed jpg,jpeg,png & gig file type";
+
+        };
+
+        // check size 
+        if($filesize > 30000){
+            $errors[] = "Sorry, your ifle is too large";
+        };
+
+    }
+
+    // update 
+    if(empty($errors) === true){
+        move_uploaded_file($filetmp,$uploadfile);
+            echo "yes successfull";
+        
+    }else{
+        echo "falied";
+    }
+  
+}
+
 
 ?>
 
@@ -188,15 +286,18 @@ if(isset($_POST['submit'])){
 
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Uploading File</title>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
 
-    </head>
-    <body>
-        
+<head>
+    <title>Uploading File</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+
+</head>
+
+<body>
+
     <div class="col-md-6 mx-auto mt-5">
-        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" enctype="multipart/form-data">
+        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" enctype="multipart/form-data">
             <div class="form-group mb-3">
                 <label for="profile">Profile Picture</label>
                 <input type="file" name="profile" id="profile" class="form-control">
@@ -206,9 +307,12 @@ if(isset($_POST['submit'])){
 
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+        crossorigin="anonymous"></script>
 
-    </body>
+</body>
+
 </html>
 
 
