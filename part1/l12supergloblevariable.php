@@ -66,4 +66,8 @@ echo "<hr>";
  echo $_SERVER["SCRIPT_NAME"];  ///phpb3/part1/l12supergloblevariable.php  (PHP_SELF )
  echo "<hr>";
 
+
+//  http://localhost/phpb3/l12supergloblevariable.php?zawzaw
+ echo $_SERVER['QUERY_STRING']; //zaw zaw
+
 ?>

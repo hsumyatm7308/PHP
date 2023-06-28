@@ -1,5 +1,7 @@
 <?php
 
+// Note:: Cookies store on User's current broswer 
+
 // echo time();
 // echo "<br>";
 
