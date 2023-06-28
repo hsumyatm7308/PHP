@@ -2,14 +2,17 @@
 
 
 ini_set("display_errors",1);
-session_start();
+// session_start();
 require_once "./dbconnect.php";
 
 
-if(!isset($_SESSION['email']) && !isset($_SESSION['password'])){
-    header('Location:./signup.php');
- }
+// if(!isset($_SESSION['email']) && !isset($_SESSION['password'])){
+//     header('Location:./signup.php');
+//  }
  
+if(authcheck()){
+    redirectto('./signup.php');
+}
 
 try {
 

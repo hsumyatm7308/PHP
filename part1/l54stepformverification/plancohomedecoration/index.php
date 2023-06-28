@@ -1,12 +1,18 @@
 
 <?php
 
-session_start();
+ini_set("display_errors",1);
+// session_start();
 
-if(!isset($_SESSION['email']) && !isset($_SESSION['password'])){
-   header('Location:./../signup.php');
+// if(!isset($_SESSION['email']) && !isset($_SESSION['password'])){
+//    header('Location:./../signup.php');
+// }
+
+require_once "./../sessionconfig.php";
+
+if(authcheck()){
+    redirectto('./../signup.php');
 }
-
 
 ?>
 

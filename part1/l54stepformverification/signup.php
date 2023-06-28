@@ -32,7 +32,7 @@ echo uniqid();
 			<span class="dot"></span>
 		</div>
 
-		<form id="form" action="./register.php" method="post" enctype="multipart/form-data">
+		<form id="form" action="./registerfunction.php" method="post" enctype="multipart/form-data">
 			<h1>Register With Us</h1>
 
 			<div class="page">
@@ -87,6 +87,9 @@ echo uniqid();
 				<button type="button" id="prevbtn" class="btn" onclick="gonow(-1)">Previous</button>
 				<button type="button" id="nextbtn" class="btn" onclick="gonow(1)">Next</button>
 			</div>
+
+            <p>Already have an account ? <a href="./signin.php">Signin Here !!!</a></p>
+
 		</form>
 
 
