@@ -1,6 +1,7 @@
-<?php
+<?php 
 
-require_once "mytrait.php";
+require_once "./mytrait.php";
+
 
 
 ?>

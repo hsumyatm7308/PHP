@@ -1,61 +1,74 @@
-<?php
+<?php 
 
-trait sitelogin {
-    public $fullname = "Honey Nway Oo";
-    public $email = "honey@gmail.com";
-    public $password = "123456";
+trait sitelogin{
+    public $fullname = "Honey Nway Oo <br/>";
+    public $email = "honey@gmail.com <br/>";
+    public $password = "123456 <br/>";
 
     public function useraccess(){
-        echo "Name is  $this->fullname & Email is $this->email & Password is $this->password";
+        echo "This is site login . Email is {$this -> email} & Password is {$this -> password} <br/>";
     }
 
     public function userinfo(){
-        echo "Profile name is $this->fullname. <br>";
+        echo "Profile name is {$this -> fullname} <br/>";
     }
+
 }
 
-trait devlogin {
+trait devologin{
+
     public function githublogin(){
-        echo "Name is  $this->fullname & Email is $this->email & Password is $this->password";
+        echo "This is github login . Email is {$this -> email} & Password is {$this -> password} <br/>";
     }
+
 }
 
-class googleauth {
-    use sitelogin, devlogin;
+class googlelogin{
+
+    //Method 3 
+    //use sitelogn,devlogin
 
     public function gmaillogin(){
-        echo "Name is  $this->fullname & Email is $this->email & Password is $this->password";
+        echo "This is Gmail login . Email is {$this -> email} & Password is {$this -> password} <br/>";
     }
 }
 
+trait maintrait{
+    //Method 4
+    use sitelogin,devologin;
+}
 
-
-class mytrait
-{
-
-    // Method 1 
+class mytrait extends googlelogin{
+    //use = keyword 
+    // //Method 1
     // use sitelogin;
     // use devlogin;
 
-    // Method 2 
-    use sitelogin,devlogin;
+    //Method 2
+    // use sitelogin,devlogin; 
 
-    // Method 4 
-    // use maintrait;
-
+    //Method 4 
+    use maintrait;
 
 }
 
-// Create an instance of googleauth and use its methods
-echo "This is Trait";
-$obj = new googleauth();
-echo $obj->fullname; // Honey Nway Oo
-echo $obj->email;    // honey@gmail.com
-echo $obj->password; // 123456
+echo "This is Trait <br/>";
 
-$obj->useraccess();
-$obj->userinfo();
-$obj->githublogin();
-$obj->gmaillogin();
+$obj = new mytrait();
+// echo $obj -> fullname . $obj -> email . $obj -> password;
+echo "<br/>";
+
+$obj -> useraccess();
+$obj -> userinfo();
+
+$obj -> githublogin();
+$obj -> gmaillogin();
+
+
+echo "<hr/>";
+
+
 
 ?>
+
+<!-- 21TR -->
