@@ -6,6 +6,11 @@ interface encrypt
     public function passworddef();
     public function passwordbcr();
     public function passwordvry();
+    public function passwrodrehash();
+
+    public function getciphermethod();
+    public function customenctypt();
+    public function customdecrypt();
 }
 
 class myencryption implements encrypt
@@ -24,13 +29,22 @@ class myencryption implements encrypt
     public function passworddef()
     {
         $newpassword = password_hash($this->passcode, PASSWORD_DEFAULT);
+        echo "<br>";
+
         echo "This is Before passcode $this->passcode and <br> this is after encrypt $newpassword <br>";
+        echo "<br>";
+        echo strlen($newpassword);
+        echo "<br>";
 
     }
     public function passwordbcr()
     {
         $newpassword = password_hash($this->passcode, PASSWORD_BCRYPT);
+        echo "<br>";
         echo "This is Before passcode $this->passcode and <br> this is after encrypt $newpassword <br>";
+        echo "<br>";
+        echo strlen($newpassword);
+        echo "<br>";
 
     }
     public function passwordvry()
@@ -45,7 +59,7 @@ class myencryption implements encrypt
 
 
         $plaintexttwo = "password12345";
-        $enccodetwo = password_hash($plaintextone, PASSWORD_DEFAULT);
+        $enccodetwo = password_hash($plaintexttwo, PASSWORD_DEFAULT);
         $verify = password_verify($plaintextone, $enccodetwo);
 
 
@@ -56,6 +70,31 @@ class myencryption implements encrypt
         }
 
     }
+
+    public function passwrodrehash()
+    {
+
+        // password_hash(string,mixed,optional)
+        // =keywords 
+        // PASSWORD_DEFAULT 
+        // PASSWORD_BCRYPT
+
+        $plaintext = "password123";
+        $encode = password_hash($plaintext, PASSWORD_DEFAULT);
+        echo "password hash with " . $encode;
+
+        if (password_needs_rehash($encode, PASSWORD_DEFAULT, ["const" => 12])) {
+
+            $rehashed = password_hash($plaintext, PASSWORD_DEFAULT, ['const', 12]);
+            echo $rehashed;
+
+        } else {
+            echo "No need to rehash";
+        }
+    }
+
+
+
 
 
     public function passwordmd5()
@@ -122,30 +161,99 @@ class myencryption implements encrypt
         $passcode = "ilovemyjob";
         $cryptkey = "fa;sdfapo";
         echo "Before encrypt with crypt = " . $passcode . "<br>";
-        echo "After encrypt with crypt = " . crypt($passcode,$cryptkey) . "<br>";
+        echo "After encrypt with crypt = " . crypt($passcode, $cryptkey) . "<br>";
 
         $getpassword = 'abIfY.EpQE2mU';
 
-        if($getpassword === crypt($passcode,$cryptkey)){
+        if ($getpassword === crypt($passcode, $cryptkey)) {
             echo "Password Match";
-        }else{
+        } else {
             echo "Password do not match";
         }
 
 
     }
+
+
+
+    public function strongpassword()
+    {
+        $passcode = "ilovemyjob";
+
+        $newpassword = md5($passcode);
+        $newpassword = sha1($newpassword);
+        $newpassword = crypt($newpassword, $newpassword);
+
+        echo "Before encrypt = " . $passcode . "<br>";
+        echo "After encrypt = " . $newpassword . "<br>";
+        echo "After encrypt by single line = " . md5(sha1(crypt($passcode, $passcode))) . "<br>";
+
+
+        $getpassword = "faTmgs46DbsVI";
+
+        if ($getpassword === md5(sha1(crypt($passcode, $passcode)))) {
+            echo "Password Match";
+        } else {
+            echo "Password do not match ";
+        }
+
+    }
+
+
+
+    public function getciphermethod()
+    {
+        $ciphers = openssl_get_cipher_methods();
+        echo "<pre>" . print_r($ciphers, true) . "</pre>"; //124 khu shi
+    }
+    public function customenctypt()
+    {
+
+    }
+
+    public function customdecrypt()
+    {
+
+    }
+
+
 }
 
 echo "This is Encryption <br>";
 $obj = new myencryption();
 $obj->setpasscode(123);
 $obj->passworddef();
+echo "<br>";
+
 $obj->passwordbcr();
+echo "<br>";
+
 $obj->passwordvry();
+echo "<br>";
+
 $obj->passwordmd5();
+echo "<br>";
+
 $obj->passwordsha1();
+echo "<br>";
+
 $obj->passwordcrypt();
+echo "<br>";
+
+$obj->strongpassword();
+echo "<br>";
+
+$obj->getciphermethod();
+echo "<br>";
+
+$obj->customdecrypt();
+echo "<br>";
+$obj->customenctypt();
+
 
 // <!-- =>Decryption  -->
 
 ?>
+
+<!-- 25CH  -->
+<!-- 6:45 pm  -->
