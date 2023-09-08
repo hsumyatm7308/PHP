@@ -1,67 +1,118 @@
 <?php
 
-class mymagicone{
-   public function __get($var){
-    echo "you not yet defined these \" ${var}\"properties. <br>";
-   }
+class mymagic
+{
+    public $num;
+    private $name;
+    protected $age;
+
+    public function __construct($val)
+    {
+        // property_exists(classname string,propertyname string)
+        // if (property_exists('mymagic', 'num')) {
+        //     echo $this->num = $val;
+
+        // } else {
+        //     echo "Property doesn[t exists ";
+        // }
 
 
-   public function __set($var,$val){
-    echo "you not yet defined these \" ${var}\"properties. so your value = \"{$val}\" <br>";
-   }
+        // if (property_exists($this, 'num')) {
+        //     echo $this->num = $val;
+
+        // } else {
+        //     echo "Property doesn[t exists ";
+        // }
 
 
-};
+        if (property_exists($this, 'name')) {
+            echo $this->name = $val;
 
-class mymagictwo{
-    public function __call($method,$vals){
-        echo "You not yet definded these = \"${$method}\" none-static method. so your value = ". "<pre>".print_r($vals,true)."<br>";
+        } else {
+            echo "Property doesn[t exists ";
+        }
+
+    }
+}
+
+class mymagicone
+{
+    public function __get($var)
+    {
+        echo "you not yet defined these \" ${var}\"properties. <br>";
     }
 
-    public static function __callStatic($method,$vals ){
-        echo "You not yet definded these = \"${$method}\" static method. so your value = ". "<pre>".print_r($vals,true)."<br>";
+
+    public function __set($var, $val)
+    {
+        echo "you not yet defined these \" ${var}\"properties. so your value = \"{$val}\" <br>";
+    }
+
+
+}
+;
+
+class mymagictwo
+{
+    public function __call($method, $vals)
+    {
+        echo "You not yet definded these = \"${$method}\" none-static method. so your value = " . "<pre>" . print_r($vals, true) . "<br>";
+    }
+
+    public static function __callStatic($method, $vals)
+    {
+        echo "You not yet definded these = \"${$method}\" static method. so your value = " . "<pre>" . print_r($vals, true) . "<br>";
 
     }
 
 
 }
 
-class mymagithree{
-    public function __invoke(){
+class mymagithree
+{
+    public function __invoke()
+    {
         echo "Hello Sir , i am working cuz you trying to print-out your class object as method . <br>";
     }
 }
 
-class mymagicfour{
+class mymagicfour
+{
     // public function __toString(){
     //     echo "Hello Sir , i am working cuz you trying to print-out your class object . <br>";
     // }
 }
-class mymagicfive{
+class mymagicfive
+{
 
     public $data;
 
 
-    public function __construct(){
-        $this->data = [1,2,3,4];
+    public function __construct()
+    {
+        $this->data = [1, 2, 3, 4];
     }
-    
-    public function __sleep(){
+
+    public function __sleep()
+    {
         "i know when you use serialize";
     }
 }
 
 
-class mymagicsix{
+class mymagicsix
+{
 
     public $data;
 
 
-    public function __construct(){
-        $this->data = [1,2,3,4];
+    public function __construct()
+    {
+        $this->data = [1, 2, 3, 4];
     }
-    
-    public function __wakeup(){
+
+    public function __wakeup()
+    {
         "i know when you use unserialize";
     }
 }
@@ -72,9 +123,13 @@ class mymagicsix{
 
 
 echo "This is Encryption <br>";
-$obj = new mymagicone();
-$obj->greeting;
-$obj->bye = "Thank You";
+$obj = new mymagic(100);
+
+echo "<hr>";
+
+$obj1 = new mymagicone();
+$obj1->greeting;
+$obj1->bye = "Thank You";
 
 
 echo "<hr>";
@@ -82,9 +137,10 @@ echo "<hr>";
 $obj2 = new mymagictwo();
 $obj2->greeting();
 $obj2->greeting("Moringin");
-$obj2->greeting("Moringin","Afternoon","Evening");
+$obj2->greeting("Moringin", "Afternoon", "Evening");
 
-$obj2->bye("bye","good bye");
+$obj2->bye("bye", "good bye");
+echo "<hr>";
 
 $obj3 = new mymagithree();
 $obj3();
@@ -95,10 +151,11 @@ $obj3();
 $obj5 = new mymagicfive();
 serialize($obj5);
 
+echo "<hr>";
 
 $obj6 = new mymagicfive();
 serialize($obj6);
 unserialize($obj6);
+echo "<hr>";
+
 ?>
-
-
