@@ -1,0 +1,37 @@
+=>MVC Framewordk (Model,View,Controller)
+
+Model 
+it's work with database (Select,Insert,Update,Delete)
+communicate with the controller (when controller request or a data to model ! model supplies that)
+
+
+View 
+A view is that part of the application that represents the presentation of data  HTML CSS codees for end user see.
+.html/css/boostrap/etc....
+
+
+Controller 
+the controller recieves input from the user , process the requst (GET,POST ,PUT,DELETE)
+the controller mediates between the models and views.
+
+-------------------------------------------
+
+=>Routing 
+
+htpps://dlt.com/
+https://dlt.com/roles/index.php
+https://dlt.com/roles/1/edit.php
+https://dlt.com/roles/show/1.php
+
+
+Base URL = https://dlt.com 
+Absolute URL = https://dlt.com/roles/index.php 
+Relative URL 
+    (i) Prefix URL          = /roles/
+    (ii) Entry-Specific URL = /show/1.php
+
+
+ =roles/show/1.php 
+  roles defines as class 
+  show is method 
+  1 is parameter 
