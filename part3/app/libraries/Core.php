@@ -7,7 +7,9 @@ class Core
     protected $curmethod = "index";
     public function __construct()
     {
-        // $this->getrul();
+        // $this->geturl();
+
+        // echo "<pre>" . print_r($this->geturl(), true) . "</pre>";
 
         // Get Class by first value 
         $url = $this->geturl();
@@ -40,9 +42,12 @@ class Core
 
     public function geturl()
     {
+
+        // echo $_GET['url'];
         $url = isset($_GET['url']) ? rtrim($_GET['url'], '/') : '';
 
-        $url = filter_var($url, FILTER_SANITIZE_URL);
+        // filter_var(string,filter)
+        $url = filter_var($url, FILTER_SANITIZE_URL); //delete charref 
         $url = explode('/', $url);
         return $url;
     }
