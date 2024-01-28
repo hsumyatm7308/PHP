@@ -19,7 +19,7 @@ ini_set('display_errors', 1);
     <!-- <p>Hi</p> -->
 
     <h1>
-        <?php echo $data['greeting']; ?>
+        <!-- <?php echo $data['greeting']; ?> -->
         <h3>
             <?php echo URLROOT ?>
         </h3>
