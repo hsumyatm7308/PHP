@@ -6,9 +6,12 @@ class Users extends Controller
 {
 
 
+    protected $usermodel;
 
     public function __construct()
     {
+
+        $this->usermodel = $this->model('User');
 
     }
 
@@ -40,6 +43,13 @@ class Users extends Controller
 
             if (empty($data['email'])) {
                 $data['emailerror'] = "Please enter email";
+            } else {
+
+                // check email exist or not 
+                if ($this->usermodel->registeremailcheck($data['email'])) {
+                    $data['emailerror'] = "Email already exist";
+
+                }
             }
 
             if (empty($data['password'])) {
@@ -59,10 +69,40 @@ class Users extends Controller
                 }
             }
 
-            $this->view('users/register', $data);
+
+            if (empty($data['fullnameerror']) && empty($data['emailerror']) && empty($data['passworderror']) && empty($data['comfirmpassworderror'])) {
+                // die('success');
+
+                $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
+
+                if ($this->usermodel->register($data)) {
+
+                    $redirecturl = URLROOT . '/users/login';
+                    header('location:' . $redirecturl);
+                } else {
+                    die('Something Wrong');
+                }
+
+            } else {
+                $this->view('users/register', $data);
+
+            }
+
+
+
 
         } else {
+            $data = [
+                "fullname" => "",
+                "email" => "",
+                "password" => "",
+                "comfirmpassword" => "",
+                "fullnameerror" => "",
+                "emailerror" => "",
+                "passworderror" => "",
+                "comfirmpassworderror" => "",
 
+            ];
         }
 
         $this->view('users/register', $data);

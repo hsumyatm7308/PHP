@@ -18,7 +18,7 @@ ini_set('display_errors', 1);
                                 <label for="fullname">Full Name</label>
                                 <input type="text" name="fullname" id="fullname"
                                     class="form-control form-control-sm rounded-0 <?php echo (!empty($data['fullnameerror'])) ? "is-invalid" : '' ?>"
-                                    value="" />
+                                    value="<?php echo $data['fullname'] ?>" />
                                 <span class="invalid-feedback">
                                     <?php echo $data['fullnameerror']; ?>
                                 </span>
@@ -28,7 +28,7 @@ ini_set('display_errors', 1);
                                 <label for="email">Email</label>
                                 <input type="email" name="email" id="email"
                                     class="form-control form-control-sm rounded-0 <?php echo (!empty($data['emailerror'])) ? "is-invalid" : '' ?>"
-                                    value="" />
+                                    value="<?php echo $data['email'] ?>" />
                                 <span class="invalid-feedback">
                                     <?php echo $data['emailerror']; ?>
                                 </span>
