@@ -38,6 +38,32 @@ class User
         }
 
     }
+
+
+    public function login($email, $password)
+    {
+        $this->db->dbquery("SELECT * FROM users WHERE email=:email");
+        $this->db->dbbind(':email', $email);
+
+
+        $row = $this->db->getsingledata();
+
+
+        // var_dump($row);
+
+        // echo $row->password; //// Attampt to property = asso ko obj nae swal htote htar loh   fetch(PDO::FETCH_ASSOC)
+        echo $row['password'];
+
+
+        $hashedpassword = $row['password'];
+
+        if (password_verify($password, $hashedpassword)) {
+            return $row;
+        } else {
+            return false;
+        }
+
+    }
 }
 
 

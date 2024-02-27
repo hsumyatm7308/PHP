@@ -12,6 +12,7 @@ ini_set('display_errors', 1);
             <div class="col-md-12">
                 <div class="card bg-light rounded-0">
                     <div class="card-body">
+                        <?php flash('register_success'); ?>
                         <h3>Register Form</h3>
                         <form action="<?php echo URLROOT; ?>/users/register" method="POST">
                             <div class="form-group mb-3">

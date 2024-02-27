@@ -15,19 +15,23 @@ ini_set('display_errors', 1);
                         <h3>Login Form</h3>
                         <form action="<?php echo URLROOT; ?>/users/login" method="POST">
 
+
                             <div class="form-group mb-3">
                                 <label for="email">Email</label>
                                 <input type="email" name="email" id="email"
-                                    class="form-control form-control-sm rounded-0 <?php echo (!empty($data['emailerror'])) ? "is-invalid" : '' ?>" />
+                                    class="form-control form-control-sm rounded-0 <?php echo (!empty($data['emailerror'])) ? "is-invalid" : '' ?>"
+                                    value="<?php echo $data['email'] ?>" autocomplete="off" />
                                 <span class="invalid-feedback">
                                     <?php echo $data['emailerror']; ?>
                                 </span>
                             </div>
 
+
                             <div class="form-group mb-3">
                                 <label for="password">Password</label>
                                 <input type="password" name="password" id="password"
-                                    class="form-control form-control-sm rounded-0 <?php echo (!empty($data['passworderror'])) ? "is-invalid" : '' ?>" />
+                                    class="form-control form-control-sm rounded-0 <?php echo (!empty($data['passworderror'])) ? "is-invalid" : '' ?>"
+                                    value="<?php echo $data['password']; ?>" autocomplete="off" />
                                 <span class="invalid-feedback">
                                     <?php echo $data['passworderror']; ?>
                                 </span>
@@ -37,11 +41,11 @@ ini_set('display_errors', 1);
 
                             <div class="row">
                                 <div class="col">
-                                    <a href="<?php echo URLROOT; ?>/users/register">Not yet register ? register Here</a>
+                                    <a href="<?php echo URLROOT; ?>/users/login">Not yet an account ? Register Here</a>
 
                                 </div>
                                 <div class="col text-end">
-                                    <button type="submit" class="btn btn-primary btn-sm rounded-0">Register</button>
+                                    <button type="submit" class="btn btn-primary btn-sm rounded-0">Login</button>
                                 </div>
                             </div>
 

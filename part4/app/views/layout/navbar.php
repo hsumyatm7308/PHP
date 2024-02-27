@@ -41,10 +41,22 @@
                                 <li class="nav-item"><a href="<?php echo URLROOT; ?>/mainpage/contact"
                                                 class="nav-link ms-2  menuitems">Contact</a></li>
 
-                                <li class="nav-item"><a href="<?php echo URLROOT; ?>/users/login"
-                                                class="nav-link ms-2  menuitems">Login</a></li>
-                                <li class="nav-item"><a href="<?php echo URLROOT; ?>/users/register"
-                                                class="nav-link ms-2  menuitems">Register</a></li>
+
+
+                                <?php if (isset($_SESSION['user_id'])): ?>
+                                        <li class="nav-item"><a href="<?php echo URLROOT; ?>/users/logout"
+                                                        class="nav-link ms-2  menuitems">Logout</a></li>
+                                <?php else: ?>
+
+                                        <li class="nav-item"><a href="<?php echo URLROOT; ?>/users/login"
+                                                        class="nav-link ms-2  menuitems">Login</a></li>
+                                        <li class="nav-item"><a href="<?php echo URLROOT; ?>/users/register"
+                                                        class="nav-link ms-2  menuitems">Register</a></li>
+
+                                <?php endif; ?>
+
+
+
 
                         </ul>
 

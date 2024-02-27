@@ -77,8 +77,12 @@ class Users extends Controller
 
                 if ($this->usermodel->register($data)) {
 
-                    $redirecturl = URLROOT . '/users/login';
-                    header('location:' . $redirecturl);
+                    // $redirecturl = URLROOT . '/users/login';
+                    // header('location:' . $redirecturl);
+
+
+                    flash("register_success", "You are registered successfully");
+                    redirect('users/login');
                 } else {
                     die('Something Wrong');
                 }
@@ -89,6 +93,7 @@ class Users extends Controller
             }
 
 
+            $this->view('users/register', $data);
 
 
         } else {
@@ -103,9 +108,11 @@ class Users extends Controller
                 "comfirmpassworderror" => "",
 
             ];
+
+            $this->view('users/register', $data);
+
         }
 
-        $this->view('users/register', $data);
 
     }
 
@@ -118,8 +125,8 @@ class Users extends Controller
 
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
-            $data = [
 
+            $data = [
                 "email" => trim($_POST['email']),
                 "password" => trim($_POST['password']),
                 "emailerror" => "",
@@ -129,22 +136,105 @@ class Users extends Controller
 
 
 
+            // validate password 
             if (empty($data['email'])) {
                 $data['emailerror'] = "Please enter email";
+            } else {
+
+                if ($this->usermodel->registeremailcheck($data['email'])) {
+
+
+                } else {
+                    $data['emailerr'] = "No user founded";
+                }
             }
+
+
+
+
+
+
 
             if (empty($data['password'])) {
                 $data['passworderror'] = "Please enter password";
             }
 
-            $this->view('users/login', $data);
+
+
+            if (empty($data['emailerror']) && empty($data['passworderror'])) {
+                // die('success');
+
+                $loginuser = $this->usermodel->login($data['email'], $data['password']);
+
+                if ($loginuser) {
+
+                    // die('sussessful login');
+
+
+                    $this->createusersession($loginuser);
+                } else {
+                    $data['passworderror'] = "Password incorrect";
+                    $this->view('users/login', $data);
+
+                }
+
+
+            } else {
+
+
+                $this->view('users/login', $data);
+
+
+            }
+
+
+
+
+
+
 
         } else {
+            $data = [
+                "email" => "",
+                "password" => "",
+                "emailerror" => "",
+                "passworderror" => "",
 
+            ];
+
+            $this->view('users/login', $data);
         }
-        $this->view('users/login', $data);
+
+
     }
 
+
+    public function createusersession($user)
+    {
+
+        echo $user->id; //err, cuz fetch(PDO::FETCH_ASSOC) in database file
+        echo $user['id'];
+
+        $_SESSION['user_id'] = $user['id'];
+        $_SESSION['user_name'] = $user['name'];
+        $_SESSION['user_email'] = $user['email'];
+
+
+
+        redirect('mainpage/index');
+    }
+
+
+    public function logout()
+    {
+        unset($_SESSION['user_id']);
+        unset($_SESSION['user_name']);
+        unset($_SESSION['user_email']);
+
+        session_destroy();
+
+        redirect('users/login');
+    }
 }
 
 ?>
