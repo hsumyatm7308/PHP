@@ -14,7 +14,7 @@ ini_set('display_errors', 1);
 
             </div>
             <div class="col-md-6">
-                <a href="<?php echo URLROOT; ?>/posts/add" class="btn btn-primary btn-sm rounded-0 float-end">Add</a>
+                <a href="<?php echo URLROOT; ?>/posts/create" class="btn btn-primary btn-sm rounded-0 float-end">Add</a>
             </div>
 
         </div>

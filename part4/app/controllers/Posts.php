@@ -35,6 +35,56 @@ class Posts extends Controller
     }
 
 
+    public function create()
+    {
+        // $data = [
+        //     'title' => '',
+        //     'content' => '',
+
+        // ];
+
+        if ($_SERVER['REQUEST_METHOD'] === "POST") {
+
+            $data = [
+                'title' => trim($_POST['title']),
+                'content' => trim($_POST['content']),
+                'user_id' => $_SESSION['user_id'],
+                'contenterr' => '',
+                'titleerr' => ''
+            ];
+
+
+            // validate data 
+            if (empty($data['title'])) {
+                $data['titleerr'] = "Please enter title";
+            }
+
+            if (empty($data['content'])) {
+                $data['contenterr'] = "Please enter content";
+            }
+
+            // no errors 
+            if (empty($data['titleerr']) && empty($data['contenterr'])) {
+                //valided
+
+
+            } else {
+                $this->view(('posts/create'), $data);
+
+            }
+
+
+        } else {
+            $data = [
+                'title' => '',
+                'content' => ''
+            ];
+
+            $this->view(('posts/create'), $data);
+
+        }
+    }
+
 
 
 }
