@@ -30,6 +30,37 @@ class Post
 
 
 
+    // create post 
+    public function createpost($data)
+    {
+        $this->db->dbquery('INSERT INTO posts(title,content,user_id) VALUE (:title,:content,:user_id)');
+
+        $this->db->dbbind(':title', $data['title']);
+        $this->db->dbbind(':content', $data['content']);
+        $this->db->dbbind(':user_id', $_SESSION['user_id']);
+
+
+        if ($this->db->dbexecute()) {
+            return true;
+
+        } else {
+            return false;
+        }
+
+    }
+
+
+
+    public function getpostbyid($id)
+    {
+        $this->db->dbquery('SELECT * FROM posts WHERE id=:id');
+        $this->db->dbbind(':id', $id);
+
+        $row = $this->db->getsingledata();
+        return $row;
+
+    }
+
 }
 
 

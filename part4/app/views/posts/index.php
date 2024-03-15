@@ -7,6 +7,10 @@ ini_set('display_errors', 1);
 
 <section class="col-md-4 mx-auto py-5">
     <div class="container">
+
+        <?php flash('post_success') ?>
+
+
         <div class="row">
 
             <div class="col-md-6">

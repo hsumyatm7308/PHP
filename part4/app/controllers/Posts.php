@@ -45,6 +45,11 @@ class Posts extends Controller
 
         if ($_SERVER['REQUEST_METHOD'] === "POST") {
 
+
+            // sanitize POST array 
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+            echo "<pre>" . print_r($_POST, true) . "</pre>";
+
             $data = [
                 'title' => trim($_POST['title']),
                 'content' => trim($_POST['content']),
@@ -68,7 +73,19 @@ class Posts extends Controller
                 //valided
 
 
+                // if ($this->postmodel->createpost($data)) {
+                //     flash('post_success', 'New Post Created');
+                //     redirect('posts');
+                // } else {
+                //     die('Error FunFoundction');
+                // }
+
+
             } else {
+                $data = [
+                    'title' => '',
+                    'content' => ''
+                ];
                 $this->view(('posts/create'), $data);
 
             }
@@ -85,6 +102,16 @@ class Posts extends Controller
         }
     }
 
+    public function show($id)
+    {
+        $post = $this->postmodel->getpostbyid($id);
+
+        $data = [
+            'post' => $post
+        ];
+        $this->view('posts/show', $data);
+
+    }
 
 
 }
